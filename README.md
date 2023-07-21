@@ -2,16 +2,27 @@
 
 Romkan.el is an Emacs package that provides functionality for converting Japanese Romaji (ローマ字) strings to Japanese Kana (仮名) strings and vice versa. It supports both Katakana (片仮名) and Hiragana (平仮名), using the Hepburn (ヘボン式) romanization system as well as the modern Kunrei-shiki (訓令式) romanization system.
 
-## API
+## Usage
 
-The package provides the following API functions:
+Once the package is installed and loaded, you can start using the conversion functions mentioned above in your Emacs Lisp code.
 
-- `(romkan-to-katakana string)`: Converts a Romaji (ローマ字) string to Katakana (片仮名).
-- `(romkan-to-hiragana string)`: Converts a Romaji (ローマ字) string to Hiragana (平仮名).
-- `(romkan-to-kana string)`: Converts a Romaji (ローマ字) string to Katakana (片仮名). (Alias for `romkan-to-katakana`)
-- `(romkan-to-hepburn string)`: Converts a Kana (仮名) or Kunrei-shiki Romaji (訓令式ローマ字) string to Hepburn Romaji (ヘボン式ローマ字).
-- `(romkan-to-kunrei string)`: Converts a Kana (仮名) or Hepburn Romaji (ヘボン式ローマ字) string to Kunrei-shiki Romaji (訓令式ローマ字).
-- `(romkan-to-roma string)`: Converts a Kana (仮名) string to Hepburn Romaji (ヘボン式ローマ字).
+For example, to convert a Romaji string to Katakana:
+
+```elisp
+(romkan-to-katakana "ninja")
+;; => ニンジャ
+```
+
+Or to convert a Kana string to Hepburn Romaji:
+
+```elisp
+(romkan-to-roma "にんじゃ")
+;; => ninja
+```
+
+## Features
+
+Unlike the original package, in this case I decided to inject the conversion tables as static constants, instead of procedurally generate them from strings. This approach slightly increases code redundancy but should also improve the speed of operations, as well as make the tables more immediately readable, which can help in identifying any potential bugs.
 
 ## Installation
 
@@ -74,23 +85,16 @@ Using the `package!` macro for Doom Emacs:
 (package! romkan :recipe (:host github :repo "gicrisf/romkan.el"))
 ```
 
-## Usage
+## API
 
-Once the package is installed and loaded, you can start using the conversion functions mentioned above in your Emacs Lisp code.
+The package provides the following functions:
 
-For example, to convert a Romaji string to Katakana:
-
-```elisp
-(romkan-to-katakana "ninja")
-;; => ニンジャ
-```
-
-Or to convert a Kana string to Hepburn Romaji:
-
-```elisp
-(romkan-to-roma "にんじゃ")
-;; => ninja
-```
+- `(romkan-to-katakana string)`: Converts a Romaji (ローマ字) string to Katakana (片仮名).
+- `(romkan-to-hiragana string)`: Converts a Romaji (ローマ字) string to Hiragana (平仮名).
+- `(romkan-to-kana string)`: Converts a Romaji (ローマ字) string to Katakana (片仮名). (Alias for `romkan-to-katakana`)
+- `(romkan-to-hepburn string)`: Converts a Kana (仮名) or Kunrei-shiki Romaji (訓令式ローマ字) string to Hepburn Romaji (ヘボン式ローマ字).
+- `(romkan-to-kunrei string)`: Converts a Kana (仮名) or Hepburn Romaji (ヘボン式ローマ字) string to Kunrei-shiki Romaji (訓令式ローマ字).
+- `(romkan-to-roma string)`: Converts a Kana (仮名) string to Hepburn Romaji (ヘボン式ローマ字).
 
 ## License
 This package is distributed under the BSD license like the Python-Romkan package.
