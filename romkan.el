@@ -1951,8 +1951,8 @@
 ;;  hannnya => han'nya
 (defun romkan--normalize-double-n (str)
   "Normalize double n in STR."
-  (replace-regexp-in-string "nn" "n'" str)
-  (romkan--remove-apostrophes str))
+  (let ((str (replace-regexp-in-string "nn" "n'" str)))
+    (romkan--remove-apostrophes str)))
 
 (defun romkan-to-katakana (str)
   "Convert a Romaji (ローマ字) to a Katakana (片仮名) in STR."
