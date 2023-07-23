@@ -1919,8 +1919,7 @@
                                ("cche" "ttye")
                                ("je" "zye")))
 
-(defconst romkan-kanpat
-"ッヴァ\\|ッヴィ\\|ッヴェ\\|ッヴォ\\|ッキャ\\|ッキュ\\|ッキョ\\|ッギャ\\|ッギュ\\|ッギョ\\|ッシャ\\|ッシュ\\|ッショ\\|ッシェ\\|ッジャ\\|ッジュ\\|ッジョ\\|ッティ\\|ッチャ\\|ッチュ\\|ッチョ\\|ッヂャ\\|ッヂュ\\|ッヂョ\\|ッドゥ\\|ッヒャ\\|ッヒュ\\|ッヒョ\\|ッビャ\\|ッビュ\\|ッビョ\\|ッピャ\\|ッピュ\\|ッピョ\\|ッフュ\\|ッファ\\|ッフィ\\|ッフェ\\|ッフォ\\|ッリャ\\|ッリュ\\|ッリョ\\|ッチェ\\|ヴァ\\|ヴィ\\|ヴェ\\|ヴォ\\|キャ\\|キュ\\|キョ\\|ギャ\\|ギュ\\|ギョ\\|シャ\\|シュ\\|ショ\\|シェ\\|ジャ\\|ジュ\\|ジョ\\|チャ\\|チュ\\|チョ\\|ヂャ\\|ヂュ\\|ヂョ\\|ティ\\|ッヴ\\|ッカ\\|ッガ\\|ッキ\\|ッギ\\|ック\\|ッグ\\|ッケ\\|ッゲ\\|ッコ\\|ッゴ\\|ッサ\\|ッザ\\|ッシ\\|ッジ\\|ッス\\|ッズ\\|ッセ\\|ッゼ\\|ッソ\\|ッゾ\\|ッタ\\|ッダ\\|ッチ\\|ッヂ\\|ッツ\\|ッヅ\\|ッテ\\|ッデ\\|ット\\|ッド\\|ッハ\\|ッバ\\|ッパ\\|ッヒ\\|ッビ\\|ッピ\\|ッフ\\|ッブ\\|ップ\\|ッヘ\\|ッベ\\|ッペ\\|ッホ\\|ッボ\\|ッポ\\|ッヤ\\|ッユ\\|ッヨ\\|ッラ\\|ッリ\\|ッル\\|ッレ\\|ッロ\\|ドゥ\\|ニャ\\|ニュ\\|ニョ\\|ヒャ\\|ヒュ\\|ヒョ\\|ビャ\\|ビュ\\|ビョ\\|ピャ\\|ピュ\\|ピョ\\|ファ\\|フィ\\|フェ\\|フォ\\|フュ\\|ミャ\\|ミュ\\|ミョ\\|リャ\\|リュ\\|リョ\\|ウィ\\|ウェ\\|ウォ\\|ディ\\|チェ\\|ジェ\\|ァ\\|ア\\|ィ\\|イ\\|ゥ\\|ウ\\|ヴ\\|ェ\\|エ\\|ォ\\|オ\\|カ\\|ガ\\|キ\\|ギ\\|ク\\|グ\\|ケ\\|ゲ\\|コ\\|ゴ\\|サ\\|ザ\\|シ\\|ジ\\|ス\\|ズ\\|セ\\|ゼ\\|ソ\\|ゾ\\|タ\\|ダ\\|チ\\|ヂ\\|ッ\\|ツ\\|ヅ\\|テ\\|デ\\|ト\\|ド\\|ナ\\|ニ\\|ヌ\\|ネ\\|ノ\\|ハ\\|バ\\|パ\\|ヒ\\|ビ\\|ピ\\|フ\\|ブ\\|プ\\|ヘ\\|ベ\\|ペ\\|ホ\\|ボ\\|ポ\\|マ\\|ミ\\|ム\\|メ\\|モ\\|ャ\\|ヤ\\|ュ\\|ユ\\|ョ\\|ヨ\\|ラ\\|リ\\|ル\\|レ\\|ロ\\|ヮ\\|ワ\\|ヰ\\|ヱ\\|ヲ\\|ン\\|ー")
+(defconst romkan-kanpat "ッヴァ\\|ッヴィ\\|ッヴェ\\|ッヴォ\\|ッキャ\\|ッキュ\\|ッキョ\\|ッギャ\\|ッギュ\\|ッギョ\\|ッシャ\\|ッシュ\\|ッショ\\|ッシェ\\|ッジャ\\|ッジュ\\|ッジョ\\|ッティ\\|ッチャ\\|ッチュ\\|ッチョ\\|ッヂャ\\|ッヂュ\\|ッヂョ\\|ッドゥ\\|ッヒャ\\|ッヒュ\\|ッヒョ\\|ッビャ\\|ッビュ\\|ッビョ\\|ッピャ\\|ッピュ\\|ッピョ\\|ッフュ\\|ッファ\\|ッフィ\\|ッフェ\\|ッフォ\\|ッリャ\\|ッリュ\\|ッリョ\\|ッチェ\\|ヴァ\\|ヴィ\\|ヴェ\\|ヴォ\\|キャ\\|キュ\\|キョ\\|ギャ\\|ギュ\\|ギョ\\|シャ\\|シュ\\|ショ\\|シェ\\|ジャ\\|ジュ\\|ジョ\\|チャ\\|チュ\\|チョ\\|ヂャ\\|ヂュ\\|ヂョ\\|ティ\\|ッヴ\\|ッカ\\|ッガ\\|ッキ\\|ッギ\\|ック\\|ッグ\\|ッケ\\|ッゲ\\|ッコ\\|ッゴ\\|ッサ\\|ッザ\\|ッシ\\|ッジ\\|ッス\\|ッズ\\|ッセ\\|ッゼ\\|ッソ\\|ッゾ\\|ッタ\\|ッダ\\|ッチ\\|ッヂ\\|ッツ\\|ッヅ\\|ッテ\\|ッデ\\|ット\\|ッド\\|ッハ\\|ッバ\\|ッパ\\|ッヒ\\|ッビ\\|ッピ\\|ッフ\\|ッブ\\|ップ\\|ッヘ\\|ッベ\\|ッペ\\|ッホ\\|ッボ\\|ッポ\\|ッヤ\\|ッユ\\|ッヨ\\|ッラ\\|ッリ\\|ッル\\|ッレ\\|ッロ\\|ドゥ\\|ニャ\\|ニュ\\|ニョ\\|ヒャ\\|ヒュ\\|ヒョ\\|ビャ\\|ビュ\\|ビョ\\|ピャ\\|ピュ\\|ピョ\\|ファ\\|フィ\\|フェ\\|フォ\\|フュ\\|ミャ\\|ミュ\\|ミョ\\|リャ\\|リュ\\|リョ\\|ウィ\\|ウェ\\|ウォ\\|ディ\\|チェ\\|ジェ\\|ァ\\|ア\\|ィ\\|イ\\|ゥ\\|ウ\\|ヴ\\|ェ\\|エ\\|ォ\\|オ\\|カ\\|ガ\\|キ\\|ギ\\|ク\\|グ\\|ケ\\|ゲ\\|コ\\|ゴ\\|サ\\|ザ\\|シ\\|ジ\\|ス\\|ズ\\|セ\\|ゼ\\|ソ\\|ゾ\\|タ\\|ダ\\|チ\\|ヂ\\|ッ\\|ツ\\|ヅ\\|テ\\|デ\\|ト\\|ド\\|ナ\\|ニ\\|ヌ\\|ネ\\|ノ\\|ハ\\|バ\\|パ\\|ヒ\\|ビ\\|ピ\\|フ\\|ブ\\|プ\\|ヘ\\|ベ\\|ペ\\|ホ\\|ボ\\|ポ\\|マ\\|ミ\\|ム\\|メ\\|モ\\|ャ\\|ヤ\\|ュ\\|ユ\\|ョ\\|ヨ\\|ラ\\|リ\\|ル\\|レ\\|ロ\\|ヮ\\|ワ\\|ヰ\\|ヱ\\|ヲ\\|ン\\|ー")
 
 (defconst romkan-rompat "kkya\\|kkyu\\|kkyo\\|ggya\\|ggyu\\|ggyo\\|ssya\\|ssyu\\|ssyo\\|ssye\\|zzya\\|zzyu\\|zzyo\\|ttya\\|ttyu\\|ttyo\\|ddya\\|ddyu\\|ddyo\\|hhya\\|hhyu\\|hhyo\\|bbya\\|bbyu\\|bbyo\\|ppya\\|ppyu\\|ppyo\\|rrya\\|rryu\\|rryo\\|ttye\\|xtsu\\|sshi\\|ssha\\|sshu\\|ssho\\|sshe\\|cchi\\|ccha\\|cchu\\|ccho\\|ttsu\\|cche\\|kya\\|kyu\\|kyo\\|gya\\|gyu\\|gyo\\|sya\\|syu\\|syo\\|sye\\|zya\\|zyu\\|zyo\\|tya\\|tyu\\|tyo\\|dya\\|dyu\\|dyo\\|xtu\\|vvu\\|vva\\|vvi\\|vve\\|vvo\\|kka\\|gga\\|kki\\|ggi\\|kku\\|ggu\\|kke\\|gge\\|kko\\|ggo\\|ssa\\|zza\\|ssi\\|zzi\\|ssu\\|zzu\\|sse\\|zze\\|sso\\|zzo\\|tta\\|dda\\|tti\\|ddi\\|ttu\\|ddu\\|tte\\|dde\\|tto\\|ddo\\|hha\\|bba\\|ppa\\|hhi\\|bbi\\|ppi\\|hhu\\|ffu\\|ffa\\|ffi\\|ffe\\|ffo\\|bbu\\|ppu\\|hhe\\|bbe\\|ppe\\|hho\\|bbo\\|ppo\\|yya\\|yyu\\|yyo\\|rra\\|rri\\|rru\\|rre\\|rro\\|nya\\|nyu\\|nyo\\|hya\\|hyu\\|hyo\\|bya\\|byu\\|byo\\|pya\\|pyu\\|pyo\\|mya\\|myu\\|myo\\|xya\\|xyu\\|xyo\\|rya\\|ryu\\|ryo\\|xwa\\|dyi\\|tye\\|zye\\|shi\\|sha\\|shu\\|sho\\|she\\|chi\\|cha\\|chu\\|cho\\|jji\\|jja\\|jju\\|jjo\\|tsu\\|che\\|xa\\|xi\\|xu\\|vu\\|va\\|vi\\|ve\\|vo\\|xe\\|xo\\|ka\\|ga\\|ki\\|gi\\|ku\\|gu\\|ke\\|ge\\|ko\\|go\\|sa\\|za\\|si\\|zi\\|su\\|zu\\|se\\|ze\\|so\\|zo\\|ta\\|da\\|ti\\|di\\|tu\\|du\\|te\\|de\\|to\\|do\\|na\\|ni\\|nu\\|ne\\|no\\|ha\\|ba\\|pa\\|hi\\|bi\\|pi\\|hu\\|fa\\|fi\\|fe\\|fo\\|fu\\|bu\\|pu\\|he\\|be\\|pe\\|ho\\|bo\\|po\\|ma\\|mi\\|mu\\|me\\|mo\\|ya\\|yu\\|yo\\|ra\\|ri\\|ru\\|re\\|ro\\|wa\\|wi\\|we\\|wo\\|n'\\|ji\\|ja\\|ju\\|jo\\|je\\|a\\|i\\|u\\|e\\|o\\|n\\|-")
 
@@ -1936,8 +1935,20 @@
 
 (defun romkan--remove-apostrophes (str)
   "Remove (unnecessary) apostrophes in STR."
-  (replace-regexp-in-string (rx "n" (or (and (not (any "aeiuoyn"))) line-end)) "n" str))
+  (replace-regexp-in-string (rx "n'" (or (not (or "a" "i" "u" "e" "o" "y" "n")) eol))
+                            (lambda (substr)
+                              ;; (message "substr is %s" substr)
+                              (replace-regexp-in-string "'.*" (lambda (subsubstr)
+                                                                ;; (message "subsubstr is %s" subsubstr)
+                                                                ;; (concat "n" (substring subsubstr 1))
+                                                                (substring subsubstr 1))
+                                                        substr)) str))
 
+;; Ad hoc solution
+;;  tanni   => tan'i
+;;  kannji  => kanji
+;;  hannnou => han'nou
+;;  hannnya => han'nya
 (defun romkan--normalize-double-n (str)
   "Normalize double n in STR."
   (replace-regexp-in-string "nn" "n'" str)
@@ -1961,47 +1972,41 @@
 (defun romkan-to-hiragana (str)
   "Convert a Romaji (ローマ字) to a Hiragana (平仮名) in STR."
   (let* ((str (downcase str))
-         (str (replace-regexp-in-string "nn" "n'" str))
-         (str (replace-regexp-in-string "n'(?=[^aiueoyn]\\|$)" "n" str)))
+         (str (romkan--normalize-double-n str)))
     (romkan--transliterate romkan-rompat romkan-romkan-h str)))
 
 (defalias 'romkan-to-kana 'romkan-to-katakana)
 
-(defun romkan-to-hepburn (str)
-  "Convert a Kana (仮名) or a Kunrei-shiki Romaji (訓令式ローマ字)
-to a Hepburn Romaji (ヘボン式ローマ字) in STR."
-  (let* ((tmp (romkan--transliterate romkan-kanpat romkan-kanrom str)) ;; Katakana conv.
-         (tmp (romkan--transliterate romkan-kanpat-h romkan-kanrom-h tmp)) ;; Hiragana conv.
-         (tmp (romkan--remove-apostrophes tmp))
-         ;; If unmodified, it's a Kunrei-shiki Romaji -- convert it to a Hepburn Romaji
-         (tmp (if (equal tmp str)
-                  (let* ((tmp (downcase tmp))
-                         (tmp (romkan--normalize-double-n tmp))
-                         (tmp (romkan--transliterate romkan-kunpat romkan-to-hepburn tmp)))
-                    tmp)
-                tmp)))
-    tmp))
+(defun romkan-to-roma (str)
+  "Convert a Kana (仮名) to a Hepburn Romaji (ヘボン式ローマ字) in STR."
+  (let* ((str (romkan--transliterate romkan-kanpat romkan-kanrom str))
+         (str (romkan--transliterate romkan-kanpat-h romkan-kanrom-h str))
+         (str (romkan--remove-apostrophes str)))
+    str))
 
 (defun romkan-to-kunrei (str)
   "Convert a Kana (仮名) or a Kunrei-shiki Romaji (訓令式ローマ字)
 to a Hepburn Romaji (ヘボン式ローマ字) in STR."
-  (let* ((tmp (romkan--transliterate romkan-kanpat romkan-kanrom str)) ;; Katakana conv.
-         (tmp (romkan--transliterate romkan-kanpat-h romkan-kanrom-h tmp)) ;; Hiragana conv.
-         (tmp (romkan--remove-apostrophes tmp))
-         ;; If unmodified, it's a Kunrei-shiki Romaji -- convert it to a Hepburn Romaji
+  (let* ((tmp (romkan-to-roma str))
+         ;; If unmodified, it's a Kunrei-shiki Romaji
          (tmp (if (equal tmp str)
-                  (let* ((tmp (downcase tmp))
-                         (tmp (romkan--normalize-double-n tmp)))
-                    tmp)
+                  ;; -- convert it to a Hepburn Romaji
+                  (let ((tmp (downcase tmp)))
+                    (romkan--normalize-double-n tmp))
                 tmp)))
     (romkan--transliterate romkan-heppat romkan-to-kunrei tmp)))
 
-(defun romkan-to-roma (str)
-  "Convert a Kana (仮名) to a Hepburn Romaji (ヘボン式ローマ字) in STR."
-  (let* ((str (romkan--transliterate romkan-kanpat romkan-kanrom str)) ;; Katakana conv.
-         (str (romkan--transliterate romkan-kanpat-h romkan-kanrom-h str)) ;; Hiragana conv.
-         (str (romkan--remove-apostrophes str)))
-    str))
+(defun romkan-to-hepburn (str)
+  "Convert a Kana (仮名) or a Kunrei-shiki Romaji (訓令式ローマ字)
+to a Hepburn Romaji (ヘボン式ローマ字) in STR."
+  (let* ((tmp (romkan-to-roma str))
+         ;; If unmodified, it's a Kunrei-shiki Romaji
+         (tmp (if (equal tmp str)
+                  ;; -- convert it to a Hepburn Romaji
+                  (let ((tmp (downcase tmp)))
+                    (romkan--normalize-double-n tmp))
+                tmp)))
+    (romkan--transliterate romkan-kunpat romkan-to-hepburn tmp)))
 
 (provide 'romkan)
 ;;; romkan.el ends here
