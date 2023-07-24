@@ -5,8 +5,8 @@
 ;; Author: gicrisf <giovanni.crisalfi@protonmail.com>
 ;; Maintainer: gicrisf <giovanni.crisalfi@protonmail.com>
 ;; Created: luglio 21, 2023
-;; Modified: luglio 21, 2023
-;; Version: 0.0.1
+;; Modified: luglio 24, 2023
+;; Version: 0.1.1
 ;; Keywords: i18n languages
 ;; Homepage: https://github.com/cromo/romkan
 ;; Package-Requires: ((emacs "24.3"))
@@ -1921,42 +1921,45 @@
                                ("cche" "ttye")
                                ("je" "zye")))
 
-(defconst romkan-kanpat "ッヴァ\\|ッヴィ\\|ッヴェ\\|ッヴォ\\|ッキャ\\|ッキュ\\|ッキョ\\|ッギャ\\|ッギュ\\|ッギョ\\|ッシャ\\|ッシュ\\|ッショ\\|ッシェ\\|ッジャ\\|ッジュ\\|ッジョ\\|ッティ\\|ッチャ\\|ッチュ\\|ッチョ\\|ッヂャ\\|ッヂュ\\|ッヂョ\\|ッドゥ\\|ッヒャ\\|ッヒュ\\|ッヒョ\\|ッビャ\\|ッビュ\\|ッビョ\\|ッピャ\\|ッピュ\\|ッピョ\\|ッフュ\\|ッファ\\|ッフィ\\|ッフェ\\|ッフォ\\|ッリャ\\|ッリュ\\|ッリョ\\|ッチェ\\|ヴァ\\|ヴィ\\|ヴェ\\|ヴォ\\|キャ\\|キュ\\|キョ\\|ギャ\\|ギュ\\|ギョ\\|シャ\\|シュ\\|ショ\\|シェ\\|ジャ\\|ジュ\\|ジョ\\|チャ\\|チュ\\|チョ\\|ヂャ\\|ヂュ\\|ヂョ\\|ティ\\|ッヴ\\|ッカ\\|ッガ\\|ッキ\\|ッギ\\|ック\\|ッグ\\|ッケ\\|ッゲ\\|ッコ\\|ッゴ\\|ッサ\\|ッザ\\|ッシ\\|ッジ\\|ッス\\|ッズ\\|ッセ\\|ッゼ\\|ッソ\\|ッゾ\\|ッタ\\|ッダ\\|ッチ\\|ッヂ\\|ッツ\\|ッヅ\\|ッテ\\|ッデ\\|ット\\|ッド\\|ッハ\\|ッバ\\|ッパ\\|ッヒ\\|ッビ\\|ッピ\\|ッフ\\|ッブ\\|ップ\\|ッヘ\\|ッベ\\|ッペ\\|ッホ\\|ッボ\\|ッポ\\|ッヤ\\|ッユ\\|ッヨ\\|ッラ\\|ッリ\\|ッル\\|ッレ\\|ッロ\\|ドゥ\\|ニャ\\|ニュ\\|ニョ\\|ヒャ\\|ヒュ\\|ヒョ\\|ビャ\\|ビュ\\|ビョ\\|ピャ\\|ピュ\\|ピョ\\|ファ\\|フィ\\|フェ\\|フォ\\|フュ\\|ミャ\\|ミュ\\|ミョ\\|リャ\\|リュ\\|リョ\\|ウィ\\|ウェ\\|ウォ\\|ディ\\|チェ\\|ジェ\\|ァ\\|ア\\|ィ\\|イ\\|ゥ\\|ウ\\|ヴ\\|ェ\\|エ\\|ォ\\|オ\\|カ\\|ガ\\|キ\\|ギ\\|ク\\|グ\\|ケ\\|ゲ\\|コ\\|ゴ\\|サ\\|ザ\\|シ\\|ジ\\|ス\\|ズ\\|セ\\|ゼ\\|ソ\\|ゾ\\|タ\\|ダ\\|チ\\|ヂ\\|ッ\\|ツ\\|ヅ\\|テ\\|デ\\|ト\\|ド\\|ナ\\|ニ\\|ヌ\\|ネ\\|ノ\\|ハ\\|バ\\|パ\\|ヒ\\|ビ\\|ピ\\|フ\\|ブ\\|プ\\|ヘ\\|ベ\\|ペ\\|ホ\\|ボ\\|ポ\\|マ\\|ミ\\|ム\\|メ\\|モ\\|ャ\\|ヤ\\|ュ\\|ユ\\|ョ\\|ヨ\\|ラ\\|リ\\|ル\\|レ\\|ロ\\|ヮ\\|ワ\\|ヰ\\|ヱ\\|ヲ\\|ン\\|ー")
+(defun romkan--get-regex-pattern-from-keys (table)
+  "Create a regex pattern from the keys in the TABLE."
+  (let* ((keys (mapcar (lambda (el) (car el)) table))
+         (keys (sort keys (lambda (a b) (> (length a) (length b))))))
+    (rx-to-string `(or ,@keys))))
 
-(defconst romkan-rompat "kkya\\|kkyu\\|kkyo\\|ggya\\|ggyu\\|ggyo\\|ssya\\|ssyu\\|ssyo\\|ssye\\|zzya\\|zzyu\\|zzyo\\|ttya\\|ttyu\\|ttyo\\|ddya\\|ddyu\\|ddyo\\|hhya\\|hhyu\\|hhyo\\|bbya\\|bbyu\\|bbyo\\|ppya\\|ppyu\\|ppyo\\|rrya\\|rryu\\|rryo\\|ttye\\|xtsu\\|sshi\\|ssha\\|sshu\\|ssho\\|sshe\\|cchi\\|ccha\\|cchu\\|ccho\\|ttsu\\|cche\\|kya\\|kyu\\|kyo\\|gya\\|gyu\\|gyo\\|sya\\|syu\\|syo\\|sye\\|zya\\|zyu\\|zyo\\|tya\\|tyu\\|tyo\\|dya\\|dyu\\|dyo\\|xtu\\|vvu\\|vva\\|vvi\\|vve\\|vvo\\|kka\\|gga\\|kki\\|ggi\\|kku\\|ggu\\|kke\\|gge\\|kko\\|ggo\\|ssa\\|zza\\|ssi\\|zzi\\|ssu\\|zzu\\|sse\\|zze\\|sso\\|zzo\\|tta\\|dda\\|tti\\|ddi\\|ttu\\|ddu\\|tte\\|dde\\|tto\\|ddo\\|hha\\|bba\\|ppa\\|hhi\\|bbi\\|ppi\\|hhu\\|ffu\\|ffa\\|ffi\\|ffe\\|ffo\\|bbu\\|ppu\\|hhe\\|bbe\\|ppe\\|hho\\|bbo\\|ppo\\|yya\\|yyu\\|yyo\\|rra\\|rri\\|rru\\|rre\\|rro\\|nya\\|nyu\\|nyo\\|hya\\|hyu\\|hyo\\|bya\\|byu\\|byo\\|pya\\|pyu\\|pyo\\|mya\\|myu\\|myo\\|xya\\|xyu\\|xyo\\|rya\\|ryu\\|ryo\\|xwa\\|dyi\\|tye\\|zye\\|shi\\|sha\\|shu\\|sho\\|she\\|chi\\|cha\\|chu\\|cho\\|jji\\|jja\\|jju\\|jjo\\|tsu\\|che\\|xa\\|xi\\|xu\\|vu\\|va\\|vi\\|ve\\|vo\\|xe\\|xo\\|ka\\|ga\\|ki\\|gi\\|ku\\|gu\\|ke\\|ge\\|ko\\|go\\|sa\\|za\\|si\\|zi\\|su\\|zu\\|se\\|ze\\|so\\|zo\\|ta\\|da\\|ti\\|di\\|tu\\|du\\|te\\|de\\|to\\|do\\|na\\|ni\\|nu\\|ne\\|no\\|ha\\|ba\\|pa\\|hi\\|bi\\|pi\\|hu\\|fa\\|fi\\|fe\\|fo\\|fu\\|bu\\|pu\\|he\\|be\\|pe\\|ho\\|bo\\|po\\|ma\\|mi\\|mu\\|me\\|mo\\|ya\\|yu\\|yo\\|ra\\|ri\\|ru\\|re\\|ro\\|wa\\|wi\\|we\\|wo\\|n'\\|ji\\|ja\\|ju\\|jo\\|je\\|a\\|i\\|u\\|e\\|o\\|n\\|-")
+(defconst romkan-kanpat (romkan--get-regex-pattern-from-keys romkan-kanrom))
+(defconst romkan-kanpat-h (romkan--get-regex-pattern-from-keys romkan-kanrom-h))
+(defconst romkan-rompat (romkan--get-regex-pattern-from-keys romkan-romkan))
+(defconst romkan-rompat-h (romkan--get-regex-pattern-from-keys romkan-romkan-h))
 
-(defconst romkan-rompat-h "kkya\\|kkyu\\|kkyo\\|ggya\\|ggyu\\|ggyo\\|ssya\\|ssyu\\|ssyo\\|zzya\\|zzyu\\|zzyo\\|ttya\\|ttyu\\|ttyo\\|ddya\\|ddyu\\|ddyo\\|hhya\\|hhyu\\|hhyo\\|bbya\\|bbyu\\|bbyo\\|ppya\\|ppyu\\|ppyo\\|rrya\\|rryu\\|rryo\\|ttye\\|xtsu\\|sshi\\|ssha\\|sshu\\|ssho\\|cchi\\|ccha\\|cchu\\|ccho\\|ttsu\\|cche\\|kya\\|kyu\\|kyo\\|gya\\|gyu\\|gyo\\|sya\\|syu\\|syo\\|zya\\|zyu\\|zyo\\|tya\\|tyu\\|tyo\\|dya\\|dyu\\|dyo\\|xtu\\|vvu\\|vva\\|vvi\\|vve\\|vvo\\|kka\\|gga\\|kki\\|ggi\\|kku\\|ggu\\|kke\\|gge\\|kko\\|ggo\\|ssa\\|zza\\|ssi\\|zzi\\|ssu\\|zzu\\|sse\\|zze\\|sso\\|zzo\\|tta\\|dda\\|tti\\|ddi\\|ttu\\|ddu\\|tte\\|dde\\|tto\\|ddo\\|hha\\|bba\\|ppa\\|hhi\\|bbi\\|ppi\\|hhu\\|ffa\\|ffi\\|ffe\\|ffo\\|bbu\\|ppu\\|hhe\\|bbe\\|ppe\\|hho\\|bbo\\|ppo\\|yya\\|yyu\\|yyo\\|rra\\|rri\\|rru\\|rre\\|rro\\|nya\\|nyu\\|nyo\\|hya\\|hyu\\|hyo\\|bya\\|byu\\|byo\\|pya\\|pyu\\|pyo\\|mya\\|myu\\|myo\\|xya\\|xyu\\|xyo\\|rya\\|ryu\\|ryo\\|xwa\\|dyi\\|tye\\|zye\\|shi\\|sha\\|shu\\|sho\\|chi\\|cha\\|chu\\|cho\\|jji\\|jja\\|jju\\|jjo\\|ffu\\|tsu\\|che\\|xa\\|xi\\|xu\\|vu\\|va\\|vi\\|ve\\|vo\\|xe\\|xo\\|ka\\|ga\\|ki\\|gi\\|ku\\|gu\\|ke\\|ge\\|ko\\|go\\|sa\\|za\\|si\\|zi\\|su\\|zu\\|se\\|ze\\|so\\|zo\\|ta\\|da\\|ti\\|di\\|tu\\|du\\|te\\|de\\|to\\|do\\|na\\|ni\\|nu\\|ne\\|no\\|ha\\|ba\\|pa\\|hi\\|bi\\|pi\\|hu\\|fa\\|fi\\|fe\\|fo\\|bu\\|pu\\|he\\|be\\|pe\\|ho\\|bo\\|po\\|ma\\|mi\\|mu\\|me\\|mo\\|ya\\|yu\\|yo\\|ra\\|ri\\|ru\\|re\\|ro\\|wa\\|wi\\|we\\|wo\\|n'\\|ji\\|ja\\|ju\\|jo\\|fu\\|je\\|a\\|i\\|u\\|e\\|o\\|n\\|-")
-
-(defconst romkan-kanpat-h "っう゛ぁ\\|っう゛ぃ\\|っう゛ぇ\\|っう゛ぉ\\|う゛ぁ\\|う゛ぃ\\|う゛ぇ\\|う゛ぉ\\|っう゛\\|っきゃ\\|っきゅ\\|っきょ\\|っぎゃ\\|っぎゅ\\|っぎょ\\|っしゃ\\|っしゅ\\|っしょ\\|っじゃ\\|っじゅ\\|っじょ\\|っちゃ\\|っちゅ\\|っちょ\\|っぢゃ\\|っぢゅ\\|っぢょ\\|っひゃ\\|っひゅ\\|っひょ\\|っびゃ\\|っびゅ\\|っびょ\\|っぴゃ\\|っぴゅ\\|っぴょ\\|っふぁ\\|っふぃ\\|っふぇ\\|っふぉ\\|っりゃ\\|っりゅ\\|っりょ\\|っちぇ\\|う゛\\|きゃ\\|きゅ\\|きょ\\|ぎゃ\\|ぎゅ\\|ぎょ\\|しゃ\\|しゅ\\|しょ\\|じゃ\\|じゅ\\|じょ\\|ちゃ\\|ちゅ\\|ちょ\\|ぢゃ\\|ぢゅ\\|ぢょ\\|っか\\|っが\\|っき\\|っぎ\\|っく\\|っぐ\\|っけ\\|っげ\\|っこ\\|っご\\|っさ\\|っざ\\|っし\\|っじ\\|っす\\|っず\\|っせ\\|っぜ\\|っそ\\|っぞ\\|った\\|っだ\\|っち\\|っぢ\\|っつ\\|っづ\\|って\\|っで\\|っと\\|っど\\|っは\\|っば\\|っぱ\\|っひ\\|っび\\|っぴ\\|っふ\\|っぶ\\|っぷ\\|っへ\\|っべ\\|っぺ\\|っほ\\|っぼ\\|っぽ\\|っや\\|っゆ\\|っよ\\|っら\\|っり\\|っる\\|っれ\\|っろ\\|にゃ\\|にゅ\\|にょ\\|ひゃ\\|ひゅ\\|ひょ\\|びゃ\\|びゅ\\|びょ\\|ぴゃ\\|ぴゅ\\|ぴょ\\|ふぁ\\|ふぃ\\|ふぇ\\|ふぉ\\|みゃ\\|みゅ\\|みょ\\|りゃ\\|りゅ\\|りょ\\|でぃ\\|ちぇ\\|じぇ\\|ぁ\\|あ\\|ぃ\\|い\\|ぅ\\|う\\|ぇ\\|え\\|ぉ\\|お\\|か\\|が\\|き\\|ぎ\\|く\\|ぐ\\|け\\|げ\\|こ\\|ご\\|さ\\|ざ\\|し\\|じ\\|す\\|ず\\|せ\\|ぜ\\|そ\\|ぞ\\|た\\|だ\\|ち\\|ぢ\\|っ\\|つ\\|づ\\|て\\|で\\|と\\|ど\\|な\\|に\\|ぬ\\|ね\\|の\\|は\\|ば\\|ぱ\\|ひ\\|び\\|ぴ\\|ふ\\|ぶ\\|ぷ\\|へ\\|べ\\|ぺ\\|ほ\\|ぼ\\|ぽ\\|ま\\|み\\|む\\|め\\|も\\|ゃ\\|や\\|ゅ\\|ゆ\\|ょ\\|よ\\|ら\\|り\\|る\\|れ\\|ろ\\|ゎ\\|わ\\|ゐ\\|ゑ\\|を\\|ん\\|ー")
-
-(defconst romkan-kunpat "kkya\\|kkyu\\|kkyo\\|ggya\\|ggyu\\|ggyo\\|ssya\\|ssyu\\|ssyo\\|ssye\\|zzya\\|zzyu\\|zzyo\\|ttya\\|ttyu\\|ttyo\\|ddya\\|ddyu\\|ddyo\\|hhya\\|hhyu\\|hhyo\\|bbya\\|bbyu\\|bbyo\\|ppya\\|ppyu\\|ppyo\\|rrya\\|rryu\\|rryo\\|ttye\\|kya\\|kyu\\|kyo\\|gya\\|gyu\\|gyo\\|sya\\|syu\\|syo\\|sye\\|zya\\|zyu\\|zyo\\|tya\\|tyu\\|tyo\\|dya\\|dyu\\|dyo\\|xtu\\|vvu\\|vva\\|vvi\\|vve\\|vvo\\|kka\\|gga\\|kki\\|ggi\\|kku\\|ggu\\|kke\\|gge\\|kko\\|ggo\\|ssa\\|zza\\|ssi\\|zzi\\|ssu\\|zzu\\|sse\\|zze\\|sso\\|zzo\\|tta\\|dda\\|tti\\|tti\\|ddi\\|ttu\\|ddu\\|tte\\|dde\\|tto\\|ddo\\|ddu\\|hha\\|bba\\|ppa\\|hhi\\|bbi\\|ppi\\|hhu\\|ffu\\|ffa\\|ffi\\|ffe\\|ffo\\|bbu\\|ppu\\|hhe\\|bbe\\|ppe\\|hho\\|bbo\\|ppo\\|yya\\|yyu\\|yyo\\|rra\\|rri\\|rru\\|rre\\|rro\\|nya\\|nyu\\|nyo\\|hya\\|hyu\\|hyo\\|bya\\|byu\\|byo\\|pya\\|pyu\\|pyo\\|mya\\|myu\\|myo\\|xya\\|xyu\\|xyo\\|rya\\|ryu\\|ryo\\|xwa\\|dyi\\|tye\\|zye\\|xa\\|xi\\|xu\\|vu\\|va\\|vi\\|ve\\|vo\\|xe\\|xo\\|ka\\|ga\\|ki\\|gi\\|ku\\|gu\\|ke\\|ge\\|ko\\|go\\|sa\\|za\\|si\\|zi\\|su\\|zu\\|se\\|ze\\|so\\|zo\\|ta\\|da\\|ti\\|di\\|ti\\|tu\\|du\\|te\\|de\\|to\\|do\\|du\\|na\\|ni\\|nu\\|ne\\|no\\|ha\\|ba\\|pa\\|hi\\|bi\\|pi\\|hu\\|fa\\|fi\\|fe\\|fo\\|fu\\|bu\\|pu\\|he\\|be\\|pe\\|ho\\|bo\\|po\\|ma\\|mi\\|mu\\|me\\|mo\\|ya\\|yu\\|yo\\|ra\\|ri\\|ru\\|re\\|ro\\|wa\\|wi\\|wi\\|we\\|we\\|wo\\|wo\\|n'\\|a\\|i\\|u\\|e\\|o\\|n\\|-")
-
-(defconst romkan-heppat "xtsu\\|kkya\\|kkyu\\|kkyo\\|ggya\\|ggyu\\|ggyo\\|sshi\\|ssha\\|sshu\\|ssho\\|sshe\\|cchi\\|ccha\\|cchu\\|ccho\\|ddya\\|ddyu\\|ddyo\\|ttsu\\|hhya\\|hhyu\\|hhyo\\|bbya\\|bbyu\\|bbyo\\|ppya\\|ppyu\\|ppyo\\|rrya\\|rryu\\|rryo\\|cche\\|kya\\|kyu\\|kyo\\|gya\\|gyu\\|gyo\\|shi\\|sha\\|shu\\|sho\\|she\\|chi\\|cha\\|chu\\|cho\\|dya\\|dyu\\|dyo\\|vvu\\|vva\\|vvi\\|vve\\|vvo\\|kka\\|gga\\|kki\\|ggi\\|kku\\|ggu\\|kke\\|gge\\|kko\\|ggo\\|ssa\\|zza\\|jji\\|jja\\|jju\\|jjo\\|ssu\\|zzu\\|sse\\|zze\\|sso\\|zzo\\|tta\\|dda\\|tti\\|ddi\\|ddu\\|tte\\|dde\\|tto\\|ddo\\|ddu\\|hha\\|bba\\|ppa\\|hhi\\|bbi\\|ppi\\|ffu\\|ffu\\|ffa\\|ffi\\|ffe\\|ffo\\|bbu\\|ppu\\|hhe\\|bbe\\|ppe\\|hho\\|bbo\\|ppo\\|yya\\|yyu\\|yyo\\|rra\\|rri\\|rru\\|rre\\|rro\\|tsu\\|nya\\|nyu\\|nyo\\|hya\\|hyu\\|hyo\\|bya\\|byu\\|byo\\|pya\\|pyu\\|pyo\\|mya\\|myu\\|myo\\|xya\\|xyu\\|xyo\\|rya\\|ryu\\|ryo\\|xwa\\|che\\|xa\\|xi\\|xu\\|vu\\|va\\|vi\\|ve\\|vo\\|xe\\|xo\\|ka\\|ga\\|ki\\|gi\\|ku\\|gu\\|ke\\|ge\\|ko\\|go\\|sa\\|za\\|ji\\|ja\\|ju\\|jo\\|su\\|zu\\|se\\|ze\\|so\\|zo\\|ta\\|da\\|di\\|ti\\|du\\|te\\|de\\|to\\|do\\|du\\|na\\|ni\\|nu\\|ne\\|no\\|ha\\|ba\\|pa\\|hi\\|bi\\|pi\\|fu\\|fa\\|fi\\|fe\\|fo\\|fu\\|bu\\|pu\\|he\\|be\\|pe\\|ho\\|bo\\|po\\|ma\\|mi\\|mu\\|me\\|mo\\|ya\\|yu\\|yo\\|ra\\|ri\\|ru\\|re\\|ro\\|wa\\|wi\\|wi\\|we\\|we\\|wo\\|wo\\|n'\\|di\\|je\\|a\\|i\\|u\\|e\\|o\\|n\\|-")
-
-(defconst romkan-kunpat-h "kkya\\|kkyu\\|kkyo\\|ggya\\|ggyu\\|ggyo\\|ssya\\|ssyu\\|ssyo\\|zzya\\|zzyu\\|zzyo\\|ttya\\|ttyu\\|ttyo\\|ddya\\|ddyu\\|ddyo\\|hhya\\|hhyu\\|hhyo\\|bbya\\|bbyu\\|bbyo\\|ppya\\|ppyu\\|ppyo\\|rrya\\|rryu\\|rryo\\|ttye\\|kya\\|kyu\\|kyo\\|gya\\|gyu\\|gyo\\|sya\\|syu\\|syo\\|zya\\|zyu\\|zyo\\|tya\\|tyu\\|tyo\\|dya\\|dyu\\|dyo\\|xtu\\|vvu\\|vva\\|vvi\\|vve\\|vvo\\|kka\\|gga\\|kki\\|ggi\\|kku\\|ggu\\|kke\\|gge\\|kko\\|ggo\\|ssa\\|zza\\|ssi\\|zzi\\|ssu\\|zzu\\|sse\\|zze\\|sso\\|zzo\\|tta\\|dda\\|tti\\|ddi\\|ttu\\|ddu\\|tte\\|dde\\|tto\\|ddo\\|hha\\|bba\\|ppa\\|hhi\\|bbi\\|ppi\\|hhu\\|ffa\\|ffi\\|ffe\\|ffo\\|bbu\\|ppu\\|hhe\\|bbe\\|ppe\\|hho\\|bbo\\|ppo\\|yya\\|yyu\\|yyo\\|rra\\|rri\\|rru\\|rre\\|rro\\|nya\\|nyu\\|nyo\\|hya\\|hyu\\|hyo\\|bya\\|byu\\|byo\\|pya\\|pyu\\|pyo\\|mya\\|myu\\|myo\\|xya\\|xyu\\|xyo\\|rya\\|ryu\\|ryo\\|xwa\\|dyi\\|tye\\|zye\\|xa\\|xi\\|xu\\|vu\\|va\\|vi\\|ve\\|vo\\|xe\\|xo\\|ka\\|ga\\|ki\\|gi\\|ku\\|gu\\|ke\\|ge\\|ko\\|go\\|sa\\|za\\|si\\|zi\\|su\\|zu\\|se\\|ze\\|so\\|zo\\|ta\\|da\\|ti\\|di\\|tu\\|du\\|te\\|de\\|to\\|do\\|na\\|ni\\|nu\\|ne\\|no\\|ha\\|ba\\|pa\\|hi\\|bi\\|pi\\|hu\\|fa\\|fi\\|fe\\|fo\\|bu\\|pu\\|he\\|be\\|pe\\|ho\\|bo\\|po\\|ma\\|mi\\|mu\\|me\\|mo\\|ya\\|yu\\|yo\\|ra\\|ri\\|ru\\|re\\|ro\\|wa\\|wi\\|we\\|wo\\|n'\\|a\\|i\\|u\\|e\\|o\\|n\\|-")
-
-(defconst romkan-heppat-h "xtsu\\|kkya\\|kkyu\\|kkyo\\|ggya\\|ggyu\\|ggyo\\|sshi\\|ssha\\|sshu\\|ssho\\|cchi\\|ccha\\|cchu\\|ccho\\|ddya\\|ddyu\\|ddyo\\|ttsu\\|hhya\\|hhyu\\|hhyo\\|bbya\\|bbyu\\|bbyo\\|ppya\\|ppyu\\|ppyo\\|rrya\\|rryu\\|rryo\\|cche\\|kya\\|kyu\\|kyo\\|gya\\|gyu\\|gyo\\|shi\\|sha\\|shu\\|sho\\|chi\\|cha\\|chu\\|cho\\|dya\\|dyu\\|dyo\\|vvu\\|vva\\|vvi\\|vve\\|vvo\\|kka\\|gga\\|kki\\|ggi\\|kku\\|ggu\\|kke\\|gge\\|kko\\|ggo\\|ssa\\|zza\\|jji\\|jja\\|jju\\|jjo\\|ssu\\|zzu\\|sse\\|zze\\|sso\\|zzo\\|tta\\|dda\\|ddi\\|ddu\\|tte\\|dde\\|tto\\|ddo\\|hha\\|bba\\|ppa\\|hhi\\|bbi\\|ppi\\|ffu\\|ffa\\|ffi\\|ffe\\|ffo\\|bbu\\|ppu\\|hhe\\|bbe\\|ppe\\|hho\\|bbo\\|ppo\\|yya\\|yyu\\|yyo\\|rra\\|rri\\|rru\\|rre\\|rro\\|tsu\\|nya\\|nyu\\|nyo\\|hya\\|hyu\\|hyo\\|bya\\|byu\\|byo\\|pya\\|pyu\\|pyo\\|mya\\|myu\\|myo\\|xya\\|xyu\\|xyo\\|rya\\|ryu\\|ryo\\|xwa\\|dyi\\|che\\|xa\\|xi\\|xu\\|vu\\|va\\|vi\\|ve\\|vo\\|xe\\|xo\\|ka\\|ga\\|ki\\|gi\\|ku\\|gu\\|ke\\|ge\\|ko\\|go\\|sa\\|za\\|ji\\|ja\\|ju\\|jo\\|su\\|zu\\|se\\|ze\\|so\\|zo\\|ta\\|da\\|di\\|du\\|te\\|de\\|to\\|do\\|na\\|ni\\|nu\\|ne\\|no\\|ha\\|ba\\|pa\\|hi\\|bi\\|pi\\|fu\\|fa\\|fi\\|fe\\|fo\\|bu\\|pu\\|he\\|be\\|pe\\|ho\\|bo\\|po\\|ma\\|mi\\|mu\\|me\\|mo\\|ya\\|yu\\|yo\\|ra\\|ri\\|ru\\|re\\|ro\\|wa\\|wi\\|we\\|wo\\|n'\\|je\\|a\\|i\\|u\\|e\\|o\\|n\\|-")
+(defconst romkan-heppat (romkan--get-regex-pattern-from-keys romkan-to-kunrei))
+(defconst romkan-heppat-h (romkan--get-regex-pattern-from-keys romkan-to-kunrei-h))
+(defconst romkan-kunpat (romkan--get-regex-pattern-from-keys romkan-to-hepburn))
+(defconst romkan-kunpat-h (romkan--get-regex-pattern-from-keys romkan-to-hepburn-h))
 
 (defun romkan--remove-apostrophes (str)
-  "Remove (unnecessary) apostrophes in STR."
+  "Remove unnecessary apostrophes in STR."
   (replace-regexp-in-string (rx "n'" (or (not (or "a" "i" "u" "e" "o" "y" "n")) eol))
                             (lambda (substr)
-                              ;; (message "substr is %s" substr)
                               (replace-regexp-in-string "'.*" (lambda (subsubstr)
-                                                                ;; (message "subsubstr is %s" subsubstr)
-                                                                ;; (concat "n" (substring subsubstr 1))
                                                                 (substring subsubstr 1))
                                                         substr)) str))
 
-;; Ad hoc solution
-;;  tanni   => tan'i
-;;  kannji  => kanji
-;;  hannnou => han'nou
-;;  hannnya => han'nya
 (defun romkan--normalize-double-n (str)
   "Normalize double n in STR."
   (let ((str (replace-regexp-in-string "nn" "n'" str)))
     (romkan--remove-apostrophes str)))
+
+(defun romkan--test-for-normalize-double-n ()
+  "Test the 'romkan--normalize-double-n' function."
+  ;; test tanni
+  (cl-assert (equal "tan'i" (romkan--normalize-double-n "tanni")))
+  ;; test kannji
+  (cl-assert (equal "kanji" (romkan-to-hepburn "kannji")))
+  ;; test hannnou
+  (cl-assert (equal "han'nou" (romkan-to-hepburn "hannnou")))
+  ;; test hannnya
+  (cl-assert (equal "han'nya" (romkan-to-hepburn "hannnya"))))
 
 (defun romkan-to-katakana (str)
   "Convert a Romaji (ローマ字) to a Katakana (片仮名) in STR."
@@ -2013,6 +2016,7 @@ to a Hepburn Romaji (ヘボン式ローマ字) in STR."
     (romkan--transliterate romkan-kunpat romkan-to-hepburn tmp)))
 
 (defun romkan--test-for-hiragana ()
+  "Test the 'romkan-to-hiragana' function."
   ;; test kanji
   (cl-assert (equal "かんじ" (romkan-to-hiragana "kanji")))
   ;; test kanzi
@@ -2051,18 +2055,21 @@ to a Hepburn Romaji (ヘボン式ローマ字) in STR."
   (cl-assert (equal "えーじぇんと" (romkan-to-hiragana "e-jento"))))
 
 (defun romkan--test-for-hepburn ()
+  "Test the 'romkan-to-hepburn' function."
   ;; test kannzi
   (cl-assert (equal "kanji" (romkan-to-hepburn "kannzi")))
   ;; test tie
   (cl-assert (equal "chie" (romkan-to-hepburn "tie"))))
 
 (defun romkan--test-for-kunrei ()
+  "Test the 'romkan-to-kunrei' function."
   ;; test kanji
   (cl-assert (equal "kanzi" (romkan-to-kunrei "kanji")))
   ;; test chie
   (cl-assert (equal "tie" (romkan-to-kunrei "chie"))))
 
 (defun romkan--test-for-roma ()
+  "Test the 'romkan-to-roma' function."
   ;; test かんじ
   (cl-assert (equal "kanji" (romkan-to-roma "かんじ")))
   ;; test ちゃう
@@ -2071,10 +2078,16 @@ to a Hepburn Romaji (ヘボン式ローマ字) in STR."
   (cl-assert (equal "han'nou" (romkan-to-roma "はんのう"))))
 
 (defun romkan--run-tests ()
+  "Run all the tests."
+  (romkan--test-for-normalize-double-n)
   (romkan--test-for-hiragana)
   (romkan--test-for-hepburn)
   (romkan--test-for-kunrei)
   (romkan--test-for-roma))
+
+(eval-when-compile
+  (when (not (romkan--run-tests))
+    (message "[Romkan]: all tests were successfully passed!")))
 
 (provide 'romkan)
 ;;; romkan.el ends here
