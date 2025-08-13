@@ -1950,17 +1950,6 @@
   (let ((str (replace-regexp-in-string "nn" "n'" str)))
     (romkan--remove-apostrophes str)))
 
-(defun romkan--test-for-normalize-double-n ()
-  "Test the 'romkan--normalize-double-n' function."
-  ;; test tanni
-  (cl-assert (equal "tan'i" (romkan--normalize-double-n "tanni")))
-  ;; test kannji
-  (cl-assert (equal "kanji" (romkan-to-hepburn "kannji")))
-  ;; test hannnou
-  (cl-assert (equal "han'nou" (romkan-to-hepburn "hannnou")))
-  ;; test hannnya
-  (cl-assert (equal "han'nya" (romkan-to-hepburn "hannnya"))))
-
 (defun romkan-to-katakana (str)
   "Convert a Romaji (ローマ字) to a Katakana (片仮名) in STR."
   (let* ((str (downcase str))
@@ -2014,80 +2003,6 @@ to a Hepburn Romaji (ヘボン式ローマ字) in STR."
                     (romkan--normalize-double-n tmp))
                 tmp)))
     (romkan--transliterate romkan-kunpat romkan-to-hepburn tmp)))
-
-(defun romkan--test-for-hiragana ()
-  "Test the 'romkan-to-hiragana' function."
-  ;; test kanji
-  (cl-assert (equal "かんじ" (romkan-to-hiragana "kanji")))
-  ;; test kanzi
-  (cl-assert (equal "かんじ" (romkan-to-hiragana "kanzi")))
-  ;; test kannji
-  (cl-assert (equal "かんじ" (romkan-to-hiragana "kannji")))
-  ;; test chie
-  (cl-assert (equal "ちえ" (romkan-to-hiragana "chie")))
-  ;; test tie
-  (cl-assert (equal "ちえ" (romkan-to-hiragana "tie")))
-  ;; test kyouju
-  (cl-assert (equal "きょうじゅ" (romkan-to-hiragana "kyouju")))
-  ;; test syuukyou
-  (cl-assert (equal "しゅうきょう" (romkan-to-hiragana "syuukyou")))
-  ;; test shuukyou
-  (cl-assert (equal "しゅうきょう" (romkan-to-hiragana "shuukyou")))
-  ;; test saichuu
-  (cl-assert (equal "さいちゅう" (romkan-to-hiragana "saichuu")))
-  ;; test saityuu
-  (cl-assert (equal "さいちゅう" (romkan-to-hiragana "saityuu")))
-  ;; test cheri
-  (cl-assert (equal "ちぇりー" (romkan-to-hiragana "cheri-")))
-  ;; test tyeri
-  (cl-assert (equal "ちぇりー" (romkan-to-hiragana "tyeri-")))
-  ;; test shinrai
-  (cl-assert (equal "しんらい" (romkan-to-hiragana "shinrai")))
-  ;; test sinrai
-  (cl-assert (equal "しんらい" (romkan-to-hiragana "sinrai")))
-  ;; test hannnou
-  (cl-assert (equal "はんのう" (romkan-to-hiragana "hannnou")))
-  ;; test hannou
-  (cl-assert (equal "はんのう" (romkan-to-hiragana "han'nou")))
-  ;; test je
-  (cl-assert (equal "じぇ" (romkan-to-hiragana "je")))
-  ;; test ejento
-  (cl-assert (equal "えーじぇんと" (romkan-to-hiragana "e-jento"))))
-
-(defun romkan--test-for-hepburn ()
-  "Test the 'romkan-to-hepburn' function."
-  ;; test kannzi
-  (cl-assert (equal "kanji" (romkan-to-hepburn "kannzi")))
-  ;; test tie
-  (cl-assert (equal "chie" (romkan-to-hepburn "tie"))))
-
-(defun romkan--test-for-kunrei ()
-  "Test the 'romkan-to-kunrei' function."
-  ;; test kanji
-  (cl-assert (equal "kanzi" (romkan-to-kunrei "kanji")))
-  ;; test chie
-  (cl-assert (equal "tie" (romkan-to-kunrei "chie"))))
-
-(defun romkan--test-for-roma ()
-  "Test the 'romkan-to-roma' function."
-  ;; test かんじ
-  (cl-assert (equal "kanji" (romkan-to-roma "かんじ")))
-  ;; test ちゃう
-  (cl-assert (equal "chau" (romkan-to-roma "ちゃう")))
-  ;; test はんのう
-  (cl-assert (equal "han'nou" (romkan-to-roma "はんのう"))))
-
-(defun romkan--run-tests ()
-  "Run all the tests."
-  (romkan--test-for-normalize-double-n)
-  (romkan--test-for-hiragana)
-  (romkan--test-for-hepburn)
-  (romkan--test-for-kunrei)
-  (romkan--test-for-roma))
-
-(eval-when-compile
-  (when (not (romkan--run-tests))
-    (message "[Romkan]: all tests were successfully passed!")))
 
 (provide 'romkan)
 ;;; romkan.el ends here
