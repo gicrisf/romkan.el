@@ -24,6 +24,18 @@ Or to convert a Kana string to Hepburn Romaji:
 
 Unlike the original package, in this case I decided to inject the conversion tables as static constants, instead of procedurally generate them from strings. This approach slightly increases code redundancy but should also improve the speed of operations, as well as make the tables more immediately readable, which can help in identifying any potential bugs.
 
+## Library Usage
+
+This package is primarily designed as a library for other Emacs packages or custom functions. Most users will want to `(require 'romkan)` in their own code rather than loading it interactively. For example, if you're building a Japanese input method or text processing tool:
+
+```elisp
+(require 'romkan)
+
+(defun my-japanese-converter (text)
+  "Convert romaji text to hiragana."
+  (romkan-to-hiragana text))
+```
+
 ## Installation
 
 ### Manual
@@ -59,15 +71,15 @@ Now, the package should be installed and loaded whenever you start Emacs.
 If you use `use-package`, you can follow the manual procedure and replace the text in the 4th step with these:
 
 ```elisp
-(use-package package-name
-     :load-path "~/.emacs.d/repo")
+(use-package romkan
+     :load-path "~/.emacs.d/romkan.el")
 ```
 
-To install the package directly from the GitHub repository, you can simply write:
+To install the package directly from the GitHub repository:
 
 ```elisp
-(use-package package-name
-  :ensure gicrisf/romkan.el)
+(use-package romkan
+  :vc (:fetcher github :repo "gicrisf/romkan.el"))
 ```
 
 ### Straight
