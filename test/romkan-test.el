@@ -1,5 +1,18 @@
 ;;; romkan-test.el --- Tests for romkan -*- lexical-binding: t; -*-
-
+;;
+;; Copyright (C) 2023 gicrisf
+;;
+;; Author: gicrisf <giovanni.crisalfi@protonmail.com>
+;; Maintainer: gicrisf <giovanni.crisalfi@protonmail.com>
+;; Created: August 14, 2025
+;; Modified: August 14, 2025
+;; Version: 1.0.0
+;; Keywords: i18n languages
+;; Homepage: https://github.com/gicrisf/romkan.el
+;; Package-Requires: ((emacs "24.3"))
+;;
+;; This file is not part of GNU Emacs.
+;;
 ;;; Commentary:
 ;; Tests for romkan.el - Japanese Romaji/Kana conversion library
 

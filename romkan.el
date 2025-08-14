@@ -4,11 +4,11 @@
 ;;
 ;; Author: gicrisf <giovanni.crisalfi@protonmail.com>
 ;; Maintainer: gicrisf <giovanni.crisalfi@protonmail.com>
-;; Created: luglio 21, 2023
-;; Modified: luglio 24, 2023
-;; Version: 0.1.1
+;; Created: July 21, 2023
+;; Modified: August 14, 2025
+;; Version: 1.0.0
 ;; Keywords: i18n languages
-;; Homepage: https://github.com/cromo/romkan
+;; Homepage: https://github.com/gicrisf/romkan.el
 ;; Package-Requires: ((emacs "24.3"))
 ;;
 ;; This file is not part of GNU Emacs.
