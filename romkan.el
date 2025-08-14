@@ -1954,7 +1954,7 @@
   "Convert a Romaji (ローマ字) to a Katakana (片仮名) in STR."
   (let* ((str (downcase str))
          (str (replace-regexp-in-string "nn" "n'" str))
-         (str (replace-regexp-in-string "n'(?=[^aiueoyn]\\|$)" "n" str)))
+         (str (replace-regexp-in-string "n'(?=[^aiueoyn]\\|\\$)" "n" str)))
     (romkan--transliterate romkan-rompat romkan-romkan str)))
 
 (defun romkan--transliterate (regex-matcher alist-dict str)
