@@ -20,12 +20,6 @@ Or to convert a Kana string to Hepburn Romaji:
 ;; => ninja
 ```
 
-## Features
-
-Unlike the original package, in this case I decided to inject the conversion tables as static constants, instead of procedurally generate them from strings. This approach slightly increases code redundancy but should also improve the speed of operations, as well as make the tables more immediately readable, which can help in identifying any potential bugs.
-
-## Library Usage
-
 This package is primarily designed as a library for other Emacs packages or custom functions. Most users will want to `(require 'romkan)` in their own code rather than loading it interactively. For example, if you're building a Japanese input method or text processing tool:
 
 ```elisp
@@ -35,6 +29,10 @@ This package is primarily designed as a library for other Emacs packages or cust
   "Convert romaji text to hiragana."
   (romkan-to-hiragana text))
 ```
+
+## Features
+
+Unlike the original package, in this case I decided to inject the conversion tables as static constants, instead of procedurally generate them from strings. This approach slightly increases code redundancy but should also improve the speed of operations, as well as make the tables more immediately readable, which can help in identifying any potential bugs.
 
 ## Installation
 
