@@ -1,6 +1,9 @@
 ;;; romkan.el --- Romaji/Kana conversion library -*- lexical-binding: t; -*-
 ;;
-;; (ɔ) Copyleft 2023, 2025 Giovanni Crisalfi (gicrisf)
+;; Copyright (C) 2023, 2025 Giovanni Crisalfi
+;; Copyright (C) 2012, 2013 Mort Yao
+;; Copyright (C) 2010 Masato Hagiwara
+;; Copyright (C) 2001 Satoru Takabayashi
 ;;
 ;; Author: gicrisf <giovanni.crisalfi@protonmail.com>
 ;; Maintainer: gicrisf <giovanni.crisalfi@protonmail.com>
