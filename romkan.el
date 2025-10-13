@@ -1,6 +1,6 @@
 ;;; romkan.el --- Romaji/Kana conversion library -*- lexical-binding: t; -*-
 ;;
-;; Copyright (C) 2023 gicrisf
+;; (ɔ) Copyleft 2023, 2025 Giovanni Crisalfi (gicrisf)
 ;;
 ;; Author: gicrisf <giovanni.crisalfi@protonmail.com>
 ;; Maintainer: gicrisf <giovanni.crisalfi@protonmail.com>
@@ -10,12 +10,54 @@
 ;; Keywords: i18n languages
 ;; Homepage: https://github.com/cromo/romkan
 ;; Package-Requires: ((emacs "24.3"))
+;; SPDX-License-Identifier: BSD-3-Clause
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
+;; Redistribution and use in source and binary forms, with or without
+;; modification, are permitted provided that the following conditions are met:
+;;
+;; 1. Redistributions of source code must retain the above copyright notice,
+;;    this list of conditions and the following disclaimer.
+;;
+;; 2. Redistributions in binary form must reproduce the above copyright notice,
+;;    this list of conditions and the following disclaimer in the documentation
+;;    and/or other materials provided with the distribution.
+;;
+;; 3. Neither the name of the copyright holders nor the names of its
+;;    contributors may be used to endorse or promote products derived from this
+;;    software without specific prior written permission.
+;;
+;; THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+;; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+;; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+;; ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+;; LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+;; CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+;; SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+;; INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+;; CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+;; POSSIBILITY OF SUCH DAMAGE.
+;;
 ;;; Commentary:
 ;;
-;;  Description
+;; romkan.el provides bidirectional conversion between Japanese Romaji
+;; (ローマ字) and Kana (仮名) scripts. It supports both Hiragana (平仮名)
+;; and Katakana (片仮名), as well as conversion between Hepburn
+;; (ヘボン式) and Kunrei-shiki (訓令式) romanization systems.
+;;
+;; Usage:
+;;
+;;   (romkan-to-hiragana "konnichiwa")  ;; => "こんにちわ"
+;;   (romkan-to-katakana "konnichiwa")  ;; => "コンニチワ"
+;;   (romkan-to-roma "こんにちは")       ;; => "konnichiha"
+;;   (romkan-to-hepburn "konnitiha")    ;; => "konnichiha"
+;;   (romkan-to-kunrei "konnichiha")    ;; => "konnitiha"
+;;
+;; The package uses static conversion tables for efficiency and supports
+;; common Romaji patterns including double consonants (っ/ッ), long vowels,
+;; and special characters.
 ;;
 ;;; Code:
 
@@ -1939,11 +1981,14 @@
 
 (defun romkan--remove-apostrophes (str)
   "Remove unnecessary apostrophes in STR."
-  (replace-regexp-in-string (rx "n'" (or (not (or "a" "i" "u" "e" "o" "y" "n")) eol))
-                            (lambda (substr)
-                              (replace-regexp-in-string "'.*" (lambda (subsubstr)
-                                                                (substring subsubstr 1))
-                                                        substr)) str))
+  (replace-regexp-in-string
+   (rx "n'" (or (not (or "a" "i" "u" "e" "o" "y" "n")) eol))
+   (lambda (substr)
+     (replace-regexp-in-string
+      "'.*"
+      (lambda (subsubstr) (substring subsubstr 1))
+      substr))
+   str))
 
 (defun romkan--normalize-double-n (str)
   "Normalize double n in STR."
