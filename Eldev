@@ -1,0 +1,13 @@
+; -*- mode: emacs-lisp; lexical-binding: t -*-
+
+;; Uncomment some calls below as needed for your project.
+;(eldev-use-package-archive 'gnu-elpa)
+;(eldev-use-package-archive 'nongnu-elpa)
+(eldev-use-package-archive 'melpa)
+
+;; Development dependencies
+(eldev-add-extra-dependencies 'lint 'elisp-lint 'test)
+
+;; Configure elisp-lint for mixed indentation (standard Emacs Lisp style)
+(with-eval-after-load 'elisp-lint
+  (setq-default indent-tabs-mode nil))
