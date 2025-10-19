@@ -2019,7 +2019,7 @@
          (str (romkan--normalize-double-n str)))
     (romkan--transliterate romkan-rompat-h romkan-romkan-h str)))
 
-(defalias 'romkan-to-kana 'romkan-to-katakana)
+(defalias 'romkan-to-kana #'romkan-to-katakana)
 
 (defun romkan-to-roma (str)
   "Convert a Kana (仮名) to a Hepburn Romaji (ヘボン式ローマ字) in STR."
